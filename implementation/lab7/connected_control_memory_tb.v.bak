@@ -1,0 +1,104 @@
+module connected_control_memory_tb;
+    reg CLK;
+    reg [31:0] PC;
+    reg [31:0] datain;
+    wire ALUSrc;
+    wire MemtoReg;
+    wire RegDst;
+    wire RegWrite;
+    wire MemRead;
+    wire MemWrite;
+    wire Branch;
+
+ 
+
+    connected_control_memory connected_control_memory_inst (
+        .CLK(CLK),
+        .PC(PC),
+        .datain(datain),
+        .ALUSrc(ALUSrc),
+        .MemtoReg(MemtoReg),
+        .RegDst(RegDst),
+        .RegWrite(RegWrite),
+        .MemRead(MemRead),
+        .MemWrite(MemWrite),
+        .Branch(Branch)
+    );
+
+ 
+
+    parameter HALF_PERIOD = 10;
+    parameter PERIOD = HALF_PERIOD * 2;
+
+ 
+
+    initial begin
+        CLK = 0;
+        forever begin
+            #HALF_PERIOD;
+            CLK = ~CLK;
+        end
+    end
+
+ 
+
+    initial begin
+        // Initialize the test inputs
+        PC = 0;
+        datain = 0;
+
+        // Perform the tests
+        #PERIOD;
+        $display("For PC = %d, Control signals: ALUSrc=%b, MemtoReg=%b, RegDst=%b, RegWrite=%b, MemRead=%b, MemWrite=%b, Branch=%b",
+                 PC, ALUSrc, MemtoReg, RegDst, RegWrite, MemRead, MemWrite, Branch);
+
+ 
+
+        PC = 1;
+        #PERIOD;
+        $display("For PC = %d, Control signals: ALUSrc=%b, MemtoReg=%b, RegDst=%b, RegWrite=%b, MemRead=%b, MemWrite=%b, Branch=%b",
+                 PC, ALUSrc, MemtoReg, RegDst, RegWrite, MemRead, MemWrite, Branch);
+
+ 
+
+        PC = 2;
+        #PERIOD;
+        $display("For PC = %d, Control signals: ALUSrc=%b, MemtoReg=%b, RegDst=%[6:49 PM] Patwari, Vishrut
+
+
+
+
+        b, RegWrite=%b, MemRead=%b, MemWrite=%b, Branch=%b",
+
+                 PC, ALUSrc, MemtoReg, RegDst, RegWrite, MemRead, MemWrite, Branch);
+
+ 
+
+        PC = 3;
+
+        #PERIOD;
+
+        $display("For PC = %d, Control signals: ALUSrc=%b, MemtoReg=%b, RegDst=%b, RegWrite=%b, MemRead=%b, MemWrite=%b, Branch=%b",
+
+                 PC, ALUSrc, MemtoReg, RegDst, RegWrite, MemRead, MemWrite, Branch);
+
+ 
+
+        // Add more test cases as needed
+
+ 
+
+        // Finish the test
+
+        $finish;
+
+    end
+
+endmodule
+
+
+
+
+
+
+

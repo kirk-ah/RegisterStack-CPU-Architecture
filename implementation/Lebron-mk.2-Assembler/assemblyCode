@@ -1,0 +1,57 @@
+RELPRIME: pushi 2
+WHILE: dup
+store
+swapproc
+jal GCD
+ret
+pushi 1
+eq
+jnz SKIP
+drop
+swap
+drop
+add
+jmp WHILE
+SKIP: drop
+drop
+drop
+drop
+store
+popra ra
+jmp ra
+GCD: dupproc
+ret
+swapproc
+dupproc
+ret
+swapproc
+swap
+jnz IFGCD1
+drop
+store
+popra ra
+jmp ra
+IFGCD1: swap
+WHILEGCD1: jz SKIPWHILE
+gt
+jz ELSEGCD1
+drop
+dup
+pop b
+sub
+push b
+jmp WHILEGCD1
+ELSEGCD1: drop
+swap
+dup
+pop a
+sub
+push a
+swap
+jmp WHILEGCD1
+SKIPWHILE: drop
+store
+pop ra
+jmp ra
+
+

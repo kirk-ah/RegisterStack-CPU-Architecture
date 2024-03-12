@@ -1,0 +1,38 @@
+timescale 1ns/1ps
+
+module tb_memory();
+
+reg [15:0] out;
+wire [15:0] in;
+reg [9:0] addr;
+reg we; 
+reg clk;
+
+memory memory_obj (
+    .data(in),
+    .addr(addr),
+    .we(we),
+    .clk(clk),
+    .q(out)
+);
+
+
+parameter HALF_PERIOD = 50;
+initial begin
+    CLK = 0;
+    forever begin
+        #(HALF_PERIOD);
+        CLK = ~CLK;
+    end
+end
+
+initial begin
+         clk = 0;
+         addr = 'h000;
+         din = 'h1111;
+
+         #(2*HALF_PERIOD);
+         addr = 'h001;
+     end
+endmodule
+

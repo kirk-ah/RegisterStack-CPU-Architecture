@@ -1,0 +1,87 @@
+|Counter_A
+direction => direction.IN1
+reset => reset.IN1
+CLK => CLK.IN1
+dout[0] << dout[0].DB_MAX_OUTPUT_PORT_TYPE
+dout[1] << dout[1].DB_MAX_OUTPUT_PORT_TYPE
+dout[2] << dout[2].DB_MAX_OUTPUT_PORT_TYPE
+dout[3] << dout[3].DB_MAX_OUTPUT_PORT_TYPE
+dout[4] << dout[4].DB_MAX_OUTPUT_PORT_TYPE
+dout[5] << dout[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Counter_A|adder:counter_adder
+a[0] => Add0.IN6
+a[1] => Add0.IN5
+a[2] => Add0.IN4
+a[3] => Add0.IN3
+a[4] => Add0.IN2
+a[5] => Add0.IN1
+b[0] => Add0.IN12
+b[1] => Add0.IN11
+b[2] => Add0.IN10
+b[3] => Add0.IN9
+b[4] => Add0.IN8
+b[5] => Add0.IN7
+r[0] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+r[1] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+r[2] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+r[3] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+r[4] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+r[5] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Counter_A|mux6b2:counter_mux
+a[0] => r.DATAB
+a[1] => r.DATAB
+a[2] => r.DATAB
+a[3] => r.DATAB
+a[4] => r.DATAB
+a[5] => r.DATAB
+b[0] => r.DATAA
+b[1] => r.DATAA
+b[2] => r.DATAA
+b[3] => r.DATAA
+b[4] => r.DATAA
+b[5] => r.DATAA
+s => r.OUTPUTSELECT
+s => r.OUTPUTSELECT
+s => r.OUTPUTSELECT
+s => r.OUTPUTSELECT
+s => r.OUTPUTSELECT
+s => r.OUTPUTSELECT
+r[0] <= r.DB_MAX_OUTPUT_PORT_TYPE
+r[1] <= r.DB_MAX_OUTPUT_PORT_TYPE
+r[2] <= r.DB_MAX_OUTPUT_PORT_TYPE
+r[3] <= r.DB_MAX_OUTPUT_PORT_TYPE
+r[4] <= r.DB_MAX_OUTPUT_PORT_TYPE
+r[5] <= r.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Counter_A|registerA:counter_register
+din[0] => dout.DATAB
+din[1] => dout.DATAB
+din[2] => dout.DATAB
+din[3] => dout.DATAB
+din[4] => dout.DATAB
+din[5] => dout.DATAB
+reset => dout.OUTPUTSELECT
+reset => dout.OUTPUTSELECT
+reset => dout.OUTPUTSELECT
+reset => dout.OUTPUTSELECT
+reset => dout.OUTPUTSELECT
+reset => dout.OUTPUTSELECT
+dout[0] <= dout[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= dout[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= dout[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= dout[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= dout[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= dout[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+CLK => dout[0]~reg0.CLK
+CLK => dout[1]~reg0.CLK
+CLK => dout[2]~reg0.CLK
+CLK => dout[3]~reg0.CLK
+CLK => dout[4]~reg0.CLK
+CLK => dout[5]~reg0.CLK
+
+

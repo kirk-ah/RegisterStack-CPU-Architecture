@@ -1,0 +1,18 @@
+# Compile of memory.v was successful.
+# Compile of memory_tb.v was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.memory_tb
+# vsim -gui work.memory_tb 
+# Start time: 17:51:55 on Apr 29,2023
+# Loading work.memory_tb
+# Loading work.memory
+add wave  \
+sim:/memory_tb/HALF_PERIOD \
+sim:/memory_tb/PERIOD \
+sim:/memory_tb/addr \
+sim:/memory_tb/clk \
+sim:/memory_tb/in \
+sim:/memory_tb/out \
+sim:/memory_tb/we
+run -all
+
